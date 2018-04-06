@@ -33,4 +33,19 @@ describe "Listings" do
       expect{click_on "Submit"}.to change{Listing.count}.by(1)
     end
   end
+
+  describe "#edit" do
+    it "should be accessible" do
+      visit edit_listing_path
+
+      expect(page.status_code).to eq(200)
+    end
+
+    it "should render a form" do
+      visit edit_listing_path
+
+      expect(page).to have_field("listing[name]")
+      expect(page).to have_field("listing[description]")
+    end
+  end
 end
