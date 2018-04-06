@@ -22,4 +22,15 @@ describe "Listings" do
       expect(page).to have_field("listing[description]")
     end
   end
+
+  describe "#create" do
+    it "should create a new listing" do
+      visit new_listing_path
+
+      fill_in 'listing[name]', with: "Xbox"
+      fill_in 'listing[description]', with: "Useless gaming console"
+
+      expect{click_on "Submit"}.to change{Listing.count}.by(1)
+    end
+  end
 end
