@@ -45,14 +45,16 @@ describe "Listings" do
   end
 
   describe "#edit" do
+    let!(:listing) { FactoryBot.create(:listing) }
+
     it "should be accessible" do
-      visit edit_listing_path
+      visit edit_listing_path(listing)
 
       expect(page.status_code).to eq(200)
     end
 
     it "should render a form" do
-      visit edit_listing_path
+      visit edit_listing_path(listing)
 
       expect(page).to have_field("listing[name]")
       expect(page).to have_field("listing[description]")
