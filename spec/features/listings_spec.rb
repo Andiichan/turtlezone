@@ -2,9 +2,19 @@ require 'rails_helper'
 
 describe "Listings" do
   describe "#index" do
+    let!(:listing) { FactoryBot.create(:listing) }
+    let!(:second_listing) { FactoryBot.create(:second_listing) }
+
     it "should be accessible" do
       visit listings_path
       expect(page.status_code).to eq(200)
+    end
+
+    it "should have latest listings" do
+      visit listings_path
+
+      expect(page).to have_content(listing.name)
+      expect(page).to have_content(second_listing.name)
     end
   end
 
