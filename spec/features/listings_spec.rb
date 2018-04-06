@@ -12,7 +12,7 @@ describe "Listings" do
     it "should be accessible" do
       visit new_listing_path
 
-      expect(page.status_code).to (eq200)
+      expect(page.status_code).to eq(200)
     end
 
     it "should render a form" do
