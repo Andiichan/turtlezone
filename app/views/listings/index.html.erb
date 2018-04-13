@@ -3,5 +3,7 @@
   <p>
     <%= listing.description %>
   </p>
+  <%= link_to "View more", listing_path(listing) %>
+  <%= link_to "Edit", edit_listing_path(listing) %>
   <hr>
 <% end %>
