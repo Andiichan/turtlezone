@@ -60,4 +60,20 @@ describe "Listings" do
       expect(page).to have_field("listing[description]")
     end
   end
+
+  describe "#show" do
+    let!(:listing) { FactoryBot.create(:listing) }
+
+    it "should be accessible" do
+      visit listing_path(listing)
+      expect(page.status_code).to eq(200)
+    end
+
+    it "should have details of current listing" do
+      visit listing_path(listing)
+
+      expect(page).to have_content(listing.title)
+      expect(page).to have_content(listing.description)
+    end
+  end
 end
