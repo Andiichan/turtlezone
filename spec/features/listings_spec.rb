@@ -72,7 +72,7 @@ describe "Listings" do
     it "should have details of current listing" do
       visit listing_path(listing)
 
-      expect(page).to have_content(listing.title)
+      expect(page).to have_content(listing.name)
       expect(page).to have_content(listing.description)
     end
   end
